@@ -9,15 +9,12 @@ const renderer = (function () {
         }
     }
     function appendNextWord(array, colorSwitch = false) {
-        if(!colorSwitch) {
-            lyric.textContent += (" " + array.shift());
-        }
-        else if(colorSwitch) {
-            const span = document.createElement("span");
+        const span = document.createElement("span");
+        span.textContent = " " + array.shift();
+        if(colorSwitch) {
             span.classList.add("fun");
-            span.textContent = " " + array.shift();
-            lyric.append(span);
         }
+        lyric.append(span);
     }
     function clearText() {
         lyric.textContent = "";

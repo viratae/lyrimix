@@ -241,6 +241,8 @@ form button:hover {
     color: var(--heading-default);
     font-size: 8rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding: 1vw;
 }
 .fun {
     color: var(--heading-fun) !important;

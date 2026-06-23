@@ -42,31 +42,31 @@ const form = (function formController() {
     });
     document.addEventListener('keydown', (e) => {
         // SPACE KEY (displays next word)
-        if(e.key === " " && lyricMode && settings.mode == "single"){
+        if((e.key === " " || e.key === "ArrowUp") && lyricMode && settings.mode == "single"){
             e.preventDefault();
             renderer.displayNextWord(lyricArray, false);
         }
-        else if(e.key === " " && lyricMode && settings.mode == "line"){
+        else if((e.key === " " || e.key === "ArrowUp") && lyricMode && settings.mode == "line"){
             e.preventDefault();
             renderer.appendNextWord(lyricArray, false);
         }
         // SHIFT KEY (displays next word in color)
-        if(e.shiftKey && lyricMode && settings.colorSwitch && settings.mode == "single") {
+        if((e.shiftKey || e.key === "ArrowLeft") && lyricMode && settings.colorSwitch && settings.mode == "single") {
             e.preventDefault();
             renderer.displayNextWord(lyricArray, true);
         }
-        else if(e.shiftKey && lyricMode && settings.colorSwitch && settings.mode == "line") {
+        else if((e.shiftKey || e.key === "ArrowLeft") && lyricMode && settings.colorSwitch && settings.mode == "line") {
             e.preventDefault();
             renderer.appendNextWord(lyricArray, true);
             console.log("Detected");
         }
         // BACKSPACE (clears screen)
-        if(e.key === "Backspace" && lyricMode) {
+        if((e.key === "Backspace" || e.key === "ArrowDown") && lyricMode) {
             e.preventDefault();
             renderer.clearText();
         }
         // ENTER (clears screen and shows next word)
-        if(e.key === "Enter" && lyricMode) {
+        if((e.key === "Enter" || e.key === "ArrowRight") && lyricMode) {
             renderer.clearText();
             e.preventDefault();
             if(settings.mode == "single") {

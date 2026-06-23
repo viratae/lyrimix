@@ -29,7 +29,7 @@
                 <div class="padding">
                     <select name="modes" id="modeInput">
                         <option value="single">Single Word Only</option>
-                        <option value="box">Box (Brat) Mode</option>
+                        <option value="line">Line (Brat) Mode</option>
                     </select>
                 </div>
             </fieldset>
@@ -51,7 +51,7 @@
                         <p>Will remove characters including quotes and parentheses</p>
                     </div>
                      <label class="switch">
-                        <input id="removeSpecialInput" type="checkbox" checked>
+                        <input id="removeSpecialInput" type="checkbox">
                         <span class="slider round"></span>
                     </label>
                 </div>
@@ -61,7 +61,7 @@
                         <p>Pressing the shift key instead of space will change the text color for the next word (for emphasis)</p>
                     </div>
                      <label class="switch">
-                        <input id="colorSwitchInput" type="checkbox">
+                        <input id="colorSwitchInput" type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
                 </div>
@@ -79,7 +79,7 @@
         </div>
     </div>
     <div id="lyricPage" class="hidden">
-        <div class="lyric">TEST <span class="fun">FUN</span></div>
+        <div id="lyric"></div>
     </div>
     <script type="module" src="index.js"></script>
 </body>
