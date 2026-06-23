@@ -41,17 +41,43 @@ const form = (function formController() {
         
     });
     document.addEventListener('keydown', (e) => {
-        if(e.key === " " && lyricMode){
+        // SPACE KEY (displays next word)
+        if(e.key === " " && lyricMode && settings.mode == "single"){
             e.preventDefault();
             renderer.displayNextWord(lyricArray, false);
         }
-    });
-    document.addEventListener('keydown', (e) => {
-        if(e.shiftKey && lyricMode && settings.colorSwitch){
+        else if(e.key === " " && lyricMode && settings.mode == "line"){
+            e.preventDefault();
+            renderer.appendNextWord(lyricArray, false);
+        }
+        // SHIFT KEY (displays next word in color)
+        if(e.shiftKey && lyricMode && settings.colorSwitch && settings.mode == "single") {
             e.preventDefault();
             renderer.displayNextWord(lyricArray, true);
         }
+        else if(e.shiftKey && lyricMode && settings.colorSwitch && settings.mode == "line") {
+            e.preventDefault();
+            renderer.appendNextWord(lyricArray, true);
+            console.log("Detected");
+        }
+        // BACKSPACE (clears screen)
+        if(e.key === "Backspace" && lyricMode) {
+            e.preventDefault();
+            renderer.clearText();
+        }
+        // ENTER (clears screen and shows next word)
+        if(e.key === "Enter" && lyricMode) {
+            renderer.clearText();
+            e.preventDefault();
+            if(settings.mode == "single") {
+                renderer.displayNextWord(lyricArray, false);
+            }
+            else if(settings.mode == "line") {
+                renderer.appendNextWord(lyricArray, false);
+            }
+        }
     });
+    
     return {
 
     }
