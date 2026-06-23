@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    transition: all .5s;
 }
 *, *::before, *::after {
   box-sizing: border-box;
@@ -221,6 +220,7 @@ form button {
 
 }
 form button:hover {
+    transition: all .5s;
     transform: scale(1.05);
 }
 .buttonContainer {
@@ -237,16 +237,16 @@ form button:hover {
     color: var(--heading-fun);
     text-decoration: none;
 }
-.lyric {
+#lyric {
     color: var(--heading-default);
     font-size: 8rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.lyric .fun {
-    color: var(--heading-fun);
+.fun {
+    color: var(--heading-fun) !important;
 }
 html[data-theme="neon"] h1,
-html[data-theme="neon"] .lyric {
+html[data-theme="neon"] #lyric {
     text-shadow: 0 0 10px rgb(0, 0, 0), 
         0 0 50px var(--heading-default);
 }
@@ -298,4 +298,7 @@ html[data-theme="light"] button {
 }
 .hidden {
     display: none !important;
+}
+.pulsing {
+        animation: pulse-animation 2s ease-in-out infinite; 
 }

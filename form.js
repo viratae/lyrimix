@@ -3,6 +3,7 @@ import {
 } from "./render.js"
 const form = (function formController() {
     const homePage = document.querySelector('#homePage');
+    const lyric = document.querySelector('#lyric');
     const lyricPage = document.querySelector('#lyricPage');
     const settingsForm = document.querySelector('#settingsForm');
     const lyricInput = document.querySelector('#lyricInput');
@@ -26,12 +27,16 @@ const form = (function formController() {
         settings.pulsing = pulsingInput.checked;
         settings.removeSpecial = removeSpecialInput.checked;
         settings.colorSwitch = colorSwitchInput.checked;
+        if(settings.pulsing) {
+            renderer.addClass(lyric, "pulsing")
+        }
         const lyrics = lyricInput.value;
         lyricArray = lyricController.cleanLyrics(lyrics, settings.removeSpecial);
-        console.log(lyricArray);
+
         renderer.hide(homePage);
         renderer.show(lyricPage);
         lyricMode = true;
+
         console.log(settings);
         
     });
@@ -42,7 +47,7 @@ const form = (function formController() {
         }
     });
     document.addEventListener('keydown', (e) => {
-        if(e.shiftKey && lyricMode){
+        if(e.shiftKey && lyricMode && settings.colorSwitch){
             e.preventDefault();
             renderer.displayNextWord(lyricArray, true);
         }
