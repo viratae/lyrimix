@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="neon">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LYRIMIX</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="homePage" class="">
+        <div class="header">
+            <h1 class="uppercase">Welcome to <span class="mainColor stretch">Lyrimix</span></h1>
+            <h3>Visualize your favorite lyrics as your words fly across the screen, dictated by every key you press</h3>
+        </div>
+        <form id="settingsForm">
+            <fieldset>
+                <legend>Choose your Theme</legend>
+                <div class="padding">
+                    <select name="themes" id="themeInput">
+                        <option value="Neon">Neon 🔮</option>
+                        <option value="Light">Light ☀️</option>
+                        <option value="Light">Dark 🌙</option>
+                        <option value="Light">Retro 📻</option>
+                    </select>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Choose your Mode</legend>
+                <div class="padding">
+                    <select name="modes" id="modeInput">
+                        <option value="single">Single Word Only</option>
+                        <option value="box">Box (Brat) Mode</option>
+                    </select>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Customize your settings</legend>
+                <div class="toggleSection">
+                    <div>
+                        <h4>Pulsing</h4>
+                        <p>Your lyrics will continously pulse on the screen</p>
+                    </div>
+                    <label class="switch">
+                        <input id="pulsingInput" type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="toggleSection">
+                    <div>
+                        <h4>Remove Special Characters</h4>
+                        <p>Will remove characters including quotes and parentheses</p>
+                    </div>
+                     <label class="switch">
+                        <input id="removeSpecialInput" type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="toggleSection">
+                    <div>
+                        <h4>Color Switch Mode</h4>
+                        <p>Pressing the shift key instead of space will change the text color for the next word (for emphasis)</p>
+                    </div>
+                     <label class="switch">
+                        <input id="colorSwitchInput" type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Input your lyrics</legend>
+                <div class="padding">
+                    <textarea name="lyricInput" id="lyricInput" rows="4" data-gramm="false" spellcheck="false"></textarea>
+                </div>
+            </fieldset>
+            <div class="buttonContainer"><button class="uppercase">Get Mixing</button></div>
+        </form>
+        <div class="footer">
+            © 2026 -&nbsp;<a href="https://github.com/viratae">viratae</a>
+        </div>
+    </div>
+    <div id="lyricPage" class="hidden">
+        <div class="lyric">TEST <span class="fun">FUN</span></div>
+    </div>
+    <script type="module" src="index.js"></script>
+</body>
+</html>
