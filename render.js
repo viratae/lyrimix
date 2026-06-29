@@ -1,5 +1,14 @@
-
 const renderer = (function () {
+    const questionIcon = document.querySelector('#questionIcon');
+    const modal = document.querySelector('.modal');
+    questionIcon.addEventListener('click', () => {
+        modal.classList.add("show");
+        console.log("dsfkjfsd");
+    });
+    const closeModal = document.querySelector('#closeModal');
+    closeModal.addEventListener('click', () => {
+        modal.classList.remove("show");
+    });
     const lyric = document.querySelector('#lyric');
     function displayNextWord(array, colorSwitch = false) {
         lyric.classList.remove("fun");
@@ -9,6 +18,9 @@ const renderer = (function () {
         }
     }
     function appendNextWord(array, colorSwitch = false) {
+        if(array.length < 1) {
+            return;
+        }
         const span = document.createElement("span");
         span.textContent = " " + array.shift();
         if(colorSwitch) {

@@ -12,13 +12,15 @@ const form = (function formController() {
     const pulsingInput = document.querySelector('#pulsingInput');
     const removeSpecialInput = document.querySelector('#removeSpecialInput');
     const colorSwitchInput = document.querySelector('#colorSwitchInput');
+    const centerTextInput = document.querySelector('#centerTextInput');
 
     let lyricArray;
     let settings = {
         mode: "single",
         pulsing: true,
         removeSpecial: true,
-        colorSwitch: false
+        colorSwitch: false,
+        centerText: true
     }
     let lyricMode = false;
     settingsForm.addEventListener('submit', (e) => {
@@ -27,8 +29,13 @@ const form = (function formController() {
         settings.pulsing = pulsingInput.checked;
         settings.removeSpecial = removeSpecialInput.checked;
         settings.colorSwitch = colorSwitchInput.checked;
+        settings.centerText = centerTextInput.checked;
         if(settings.pulsing) {
-            renderer.addClass(lyric, "pulsing")
+            renderer.addClass(lyric, "pulsing");
+        }
+        if(!settings.centerText) {
+            renderer.addClass(lyricPage, "leftAlign");
+            lyric.style.textAlign = "left";
         }
         const lyrics = lyricInput.value;
         lyricArray = lyricController.cleanLyrics(lyrics, settings.removeSpecial);
@@ -38,11 +45,10 @@ const form = (function formController() {
         lyricMode = true;
 
         console.log(settings);
-        
     });
     document.addEventListener('keydown', (e) => {
-        // SPACE KEY (displays next word)
-        if((e.key === " " || e.key === "ArrowUp") && lyricMode && settings.mode == "single"){
+        // UP ARROW (displays next word)
+        if((e.key === "ArrowUp") && lyricMode && settings.mode == "single"){
             e.preventDefault();
             renderer.displayNextWord(lyricArray, false);
         }
@@ -50,22 +56,21 @@ const form = (function formController() {
             e.preventDefault();
             renderer.appendNextWord(lyricArray, false);
         }
-        // SHIFT KEY (displays next word in color)
-        if((e.shiftKey || e.key === "ArrowLeft") && lyricMode && settings.colorSwitch && settings.mode == "single") {
+        // LEFT ARROW (displays next word in color)
+        if((e.key === "ArrowLeft") && lyricMode && settings.colorSwitch && settings.mode == "single") {
             e.preventDefault();
             renderer.displayNextWord(lyricArray, true);
         }
-        else if((e.shiftKey || e.key === "ArrowLeft") && lyricMode && settings.colorSwitch && settings.mode == "line") {
+        else if((e.key === "ArrowLeft") && lyricMode && settings.colorSwitch && settings.mode == "line") {
             e.preventDefault();
             renderer.appendNextWord(lyricArray, true);
-            console.log("Detected");
         }
-        // BACKSPACE (clears screen)
+        // DOWN ARROW (clears screen)
         if((e.key === "Backspace" || e.key === "ArrowDown") && lyricMode) {
             e.preventDefault();
             renderer.clearText();
         }
-        // ENTER (clears screen and shows next word)
+        // RIGHT ARROW (clears screen and shows next word)
         if((e.key === "Enter" || e.key === "ArrowRight") && lyricMode) {
             renderer.clearText();
             e.preventDefault();
@@ -74,6 +79,17 @@ const form = (function formController() {
             }
             else if(settings.mode == "line") {
                 renderer.appendNextWord(lyricArray, false);
+            }
+        }
+        // (clears screen and shows next word in fun color)
+        if(e.shiftKey && lyricMode) {
+            e.preventDefault();
+            if(settings.mode === "single") {
+                renderer.displayNextWord(lyricArray, true);
+            } 
+            else if(settings.mode === "line") {
+                renderer.clearText();
+                renderer.appendNextWord(lyricArray, true);
             }
         }
     });
