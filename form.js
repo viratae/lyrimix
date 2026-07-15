@@ -13,7 +13,7 @@ const form = (function formController() {
     const removeSpecialInput = document.querySelector('#removeSpecialInput');
     const colorSwitchInput = document.querySelector('#colorSwitchInput');
     const centerTextInput = document.querySelector('#centerTextInput');
-
+    const themeInput = document.querySelector('#themeInput');
     let lyricArray;
     let settings = {
         mode: "single",
@@ -46,6 +46,19 @@ const form = (function formController() {
 
         console.log(settings);
     });
+    const savedTheme = localStorage.getItem('user-theme');
+
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeInput.value = savedTheme;
+    }
+    themeInput.addEventListener('change', (e) => {
+        changeTheme(e.target.value);
+        localStorage.setItem('user-theme', e.target.value);
+    });
+    function changeTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+    }
     document.addEventListener('keydown', (e) => {
         // UP ARROW (displays next word)
         if((e.key === "ArrowUp") && lyricMode && settings.mode == "single"){

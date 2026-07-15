@@ -6,12 +6,21 @@
   box-sizing: border-box;
 }
 /* --- BASIC THEME COLORS ---  */
-:root, html[data-theme="neon"] {
-    --heading-default: white;
-    --heading-fun: rgb(255, 0, 221);
-    --background-color: rgb(20, 4, 35);
-    --form-color: rgb(67, 36, 79);
-    --form-color-dark: rgb(37, 19, 45);
+:root { 
+  --heading-default: white;
+  --heading-fun: rgb(255, 0, 221);
+  --background-color: rgb(20, 4, 35);
+  --form-color: rgb(67, 36, 79);
+  --form-color-dark: rgb(37, 19, 45);
+}
+
+/* 2. Neon theme explicitly (uses the same values) */
+html[data-theme="neon"] {
+  --heading-default: white;
+  --heading-fun: rgb(255, 0, 221);
+  --background-color: rgb(20, 4, 35);
+  --form-color: rgb(67, 36, 79);
+  --form-color-dark: rgb(37, 19, 45);
 }
 html[data-theme="light"] {
     --heading-default: rgb(0, 0, 0);
@@ -29,7 +38,7 @@ html[data-theme="dark"] {
 }
 html[data-theme="retro"] {
     --heading-default: rgb(255, 255, 255);
-    --heading-fun: rgb(244, 139, 60);
+    --heading-fun: rgb(255, 156, 80);
     --background-color: rgb(56, 167, 193);
     --form-color: rgb(62, 139, 156);
     --form-color-dark: rgb(39, 118, 135);
