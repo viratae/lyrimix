@@ -65,12 +65,11 @@ body {
 }
 .modalContent {
     background-color: var(--form-color);
-    padding: 40px;
+    padding: 30px;
     border-radius: 10px;
     width: 60vw;
     height: 80vh;
     position: relative;
-
 }
 #modalInstructions {
     display: flex;
@@ -155,7 +154,7 @@ body {
     align-items: flex-start;
 }
 h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: var(--heading-default);
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-bottom: 5px;
@@ -166,10 +165,12 @@ h3 {
     color: color-mix(in srgb, var(--heading-default) 70%, transparent);
     font-style: italic;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
 }
 h4 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: color-mix(in srgb, var(--heading-default) 90%, transparent);
+    font-size: 1rem;
 }
 p {
     color: color-mix(in srgb, var(--heading-default) 60%, transparent);
@@ -187,7 +188,7 @@ p {
 #settingsForm {
     background-color: var(--form-color);
     width: 70vw;
-    padding: 20px;
+    padding: 15px;
     border-radius: 20px;
 }
 select, select::picker(select) {
@@ -222,6 +223,7 @@ legend {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
     padding: 0px 10px;
+    font-size: 1rem;
 }
 fieldset {
     border-color: color-mix(in srgb, var(--heading-default) 70%, transparent);
@@ -298,7 +300,7 @@ input:checked + .slider:before {
     display:flex;
     justify-content: space-between;
     gap: 10px;
-    padding: 10px;
+    padding: 6px 10px;
     align-items: center;
 }
 #lyricInput {
@@ -318,10 +320,9 @@ form button {
     background-color: transparent;
     font-size: 1.2rem;
     font-weight: bold;
-    padding: 10px;
+    padding: 5px;
     border-radius: 10px;
     border: 2px solid var(--heading-default);
-
 }
 form button:hover {
     transition: all .5s;
@@ -366,9 +367,7 @@ html[data-theme="neon"] .buttonContainer {
     
 }
 html[data-theme="neon"] form button {
-    border: 3px solid rgb(255, 33, 192);
-    border-radius: 8px;
-    padding: 10px;
+    border: 2px solid rgb(255, 33, 192);
     box-shadow: 0 0 12px 1px rgba(162, 13, 255, 0.453);
     text-shadow: 0 0 10px rgb(255, 33, 192), 
         0 0 1px rgb(162, 13, 255),
